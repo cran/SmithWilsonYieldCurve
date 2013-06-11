@@ -1,0 +1,22 @@
+Package: SmithWilsonYieldCurve
+Type: Package
+Title: Smith-Wilson Yield Curve Construction
+Version: 1.0.1
+Date: 2013-06-11
+Author: Phil Joubert
+Maintainer: Phil Joubert <phil.joubert@not-normal-consulting.co.uk>
+Description: Constructs a yield curve by the Smith-Wilson method from a
+        table of LIBOR and SWAP rates
+License: GPL-3
+Suggests: testthat
+Collate: 'fWilson.R' 'fFitKernelWeights.R' 'fCreateCashflowMatrix.R'
+        'fCreateTimeVector.R' 'fCreateKernelMatrix.R'
+        'fFitSmithWilsonYieldCurve.R' 'fFitYieldCurve.R'
+        'fFitSmithWilsonYieldCurveToInstruments.R' 'Utilities.R'
+        'SmithWilsonYieldCurve.R' 'plot.SmithWilsonYieldCurve.R'
+        'lines.SmithWilsonYieldCurve.R'
+        'points.SmithWilsonYieldCurve.R'
+Packaged: 2013-06-19 12:23:31 UTC; evilphil
+NeedsCompilation: no
+Repository: CRAN
+Date/Publication: 2013-06-19 17:42:29

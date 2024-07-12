@@ -15,9 +15,14 @@ fCreateCashflowMatrix <- function( dfInstruments ) {
 		
 		if ( "LIBOR" == thisInstrument[["Type"]] ) {
 			cashflowSchedule <- fGetCashflowsLibor( thisInstrument )
+			
 		} else if ( "SWAP" == thisInstrument[["Type"]] ) {
 			cashflowSchedule <- fGetCashflowsSwap( thisInstrument )
-		} else {
+			
+		} else if ("BOND" == thisInstrument[["Type"]]) {
+		  cashflowSchedule <- fGetCashflowsBond(thisInstrument)
+		  
+		}else {
 			stop( "Unknown instrument Type " %&% thisInstrument[["Type"]] %&% " at line " %&% idx )
 		}
 		
@@ -61,3 +66,25 @@ fGetCashflowsSwap <- function( dfInstrument ) {
 	return( data.frame( times, cashflows ) )
 	
 }
+
+
+#' Gets the cashflow schedule for a bond
+#' 
+#' @param dfInstrument A market instrument as a dataframe with columns Frequency, Tenor and Rate with Type in (LIBOR, SWAP), Tenor the instrument maturity in years and rate the rate per annum
+#' 
+fGetCashflowsBond <- function (dfInstrument) 
+{
+  freq <- dfInstrument[["Frequency"]]
+  dcf <- 1/dfInstrument[["Frequency"]]
+  
+  times <- fGetTimesBond(dfInstrument)
+  
+  cashflows <- rep(dfInstrument[["Rate"]] * dcf, length(times))
+  cashflows[length(cashflows)] <- cashflows[length(cashflows)] + 1
+  
+  if ((0L == length(cashflows)) || (0L == length(times))) 
+    stop("No cashflows calculated for bond, check Tenor and Frequency")
+  
+  return(data.frame(times, cashflows))
+}
+

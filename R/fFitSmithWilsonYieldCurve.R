@@ -4,9 +4,9 @@
 #' 
 #' @return a list containing:
 ##' \itemize{
-##'  \item{"P"}{ a function of time which gives the ZCB price to that term }
-##'  \item{"xi"}{ the vector of weights applied to the kernel functions to obtain the ZCB price }
-##'  \item{"K"}{ the (compound) kernel vector }
+##'  \item "P" a function of time which gives the ZCB price to that term 
+##'  \item "xi" the vector of weights applied to the kernel functions to obtain the ZCB price 
+##'  \item "K" the (compound) kernel vector 
 ##' } 
 #' 
 #' @param TimesVector A vector of all cashflow times

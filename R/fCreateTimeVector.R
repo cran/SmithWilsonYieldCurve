@@ -17,8 +17,13 @@ fCreateTimeVector <- function( dfInstruments ) {
 		
 		if ( "LIBOR" == thisInstrument[["Type"]] ) {
 			times <- fGetTimesLibor( thisInstrument )
+			
 		} else if ( "SWAP" == thisInstrument[["Type"]] ) {
 			times <- fGetTimesSwap(  thisInstrument )
+			
+		} else if ("BOND" == thisInstrument[["Type"]]) {
+		  times <- fGetTimesBond(thisInstrument)
+		  
 		} else {
 			stop( "Unknown instrument Type " %&% thisInstrument[["Type"]] %&% " at line " %&% idx )
 		}
@@ -39,7 +44,7 @@ fCreateTimeVector <- function( dfInstruments ) {
 
 #' Extract the payment date of a LIBOR agreement in years
 #' 
-#' @param dfInstrument A dataframe of instuments with at least columns Type and Tenor
+#' @param dfInstrument A dataframe of instuments with at least columns Tenor
 #' 
 fGetTimesLibor <- function( dfInstrument ) {
 		
@@ -50,7 +55,7 @@ fGetTimesLibor <- function( dfInstrument ) {
 
 #' Extract the payment dates of a Swap agreement in years
 #' 
-#' @param dfInstrument A dataframe of instuments with at least columns Type and Tenor
+#' @param dfInstrument A dataframe of instuments with at least columns Frequency and Tenor
 #' 
 fGetTimesSwap <- function( dfInstrument ) {
 	
@@ -59,3 +64,24 @@ fGetTimesSwap <- function( dfInstrument ) {
 	return( t )
 	
 }
+
+
+#' Extract the payment dates of a Bond in years
+#' 
+#' @param dfInstrument A dataframe of an instrument with at least columns Frequency and Tenor
+#' 
+fGetTimesBond <- function (dfInstrument) {
+  
+  freq <- dfInstrument[["Frequency"]]
+  dcf <- 1/freq
+  t <- dfInstrument[["Tenor"]]
+  tx <- t-dcf
+  
+  while (tx > 0) {
+    t <- c(tx, t)
+    tx <- tx-dcf
+  }
+  
+  return(t)
+}
+

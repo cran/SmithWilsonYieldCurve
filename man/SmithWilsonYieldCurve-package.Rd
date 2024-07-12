@@ -24,9 +24,6 @@
   first element of which is a function P(t), which returns
   the zero coupon bond price of the fitted curve at time t.
 
-  Details including mathematics at
-  \url{http://www.not-normal-consulting.co.uk}, or check
-  the EIOPA document in references.
 }
 \examples{
 dfInstruments <- data.frame(c("SWAP", "SWAP"), c(1,10), c(1,1), c(0.025, 0.05))
@@ -36,9 +33,9 @@ dfInstruments <- data.frame(c("SWAP", "SWAP"), c(1,10), c(1,1), c(0.025, 0.05))
 }
 \author{
   Phil Joubert
-  \email{phil.joubert@not-normal-consulting.co.uk}
+  \email{phil.joubert@gmail.com}
 }
 \references{
-  \url{http://eiopa.europa.eu/fileadmin/tx_dam/files/consultations/QIS/QIS5/ceiops-paper-extrapolation-risk-free-rates_en-20100802.pdf}
+  Smith A. and Wilson, T. - "Fitting Yield curves with long Term Constraints" (2001)
 }
 

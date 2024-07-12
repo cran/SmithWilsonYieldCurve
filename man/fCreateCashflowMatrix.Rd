@@ -7,7 +7,7 @@
 \arguments{
   \item{dfInstruments}{A set of market instruments as a
   dataframe with columns Type, Tenor, Frequency and Rate
-  with Type in (LIBOR, SWAP), Tenor the instrument maturity
+  with Type in (LIBOR, SWAP, BOND), Tenor the instrument maturity
   in years and rate the rate per annum}
 }
 \description{

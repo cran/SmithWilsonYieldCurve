@@ -1,3 +1,4 @@
+importFrom("graphics", "lines", "points")
 export(fFitSmithWilsonYieldCurve)
 export(fFitSmithWilsonYieldCurveToInstruments)
 S3method(lines,SmithWilsonYieldCurve)

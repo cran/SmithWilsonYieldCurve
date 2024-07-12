@@ -5,6 +5,8 @@
 #' @param aspect either "cts" for continously compounded spot rates, or "zero" for ZCB prices
 #' @param ... other arguments to pass to the default lines function
 #' 
+#' @return No return value, called for side effect of drawing a graph of the curve
+#' 
 #' @method lines SmithWilsonYieldCurve
 #' @export
 #' 
